@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "Azure Group Project", "Azure Group Project\Azure Group Project.ccproj", "{EADB2E4C-2AB5-45F9-B6FE-20E4B48D50A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupProjectWeb", "WebRole1\GroupProjectWeb.csproj", "{8BF29D72-C5ED-4077-921D-8662311B7B0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupProjectWorker", "WorkerRoleWithSBQueue1\GroupProjectWorker.csproj", "{7D48DD7B-1CC8-41E2-8B9E-37736E7C44C4}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://azuregroupproject.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Azure\u0020Group\u0020Project\\Azure\u0020Group\u0020Project.ccproj
+		SccProjectName1 = Azure\u0020Group\u0020Project
+		SccLocalPath1 = Azure\u0020Group\u0020Project
+		SccProjectUniqueName2 = WebRole1\\GroupProjectWeb.csproj
+		SccProjectName2 = WebRole1
+		SccLocalPath2 = WebRole1
+		SccProjectUniqueName3 = WorkerRoleWithSBQueue1\\GroupProjectWorker.csproj
+		SccProjectName3 = WorkerRoleWithSBQueue1
+		SccLocalPath3 = WorkerRoleWithSBQueue1
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EADB2E4C-2AB5-45F9-B6FE-20E4B48D50A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EADB2E4C-2AB5-45F9-B6FE-20E4B48D50A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EADB2E4C-2AB5-45F9-B6FE-20E4B48D50A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EADB2E4C-2AB5-45F9-B6FE-20E4B48D50A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF29D72-C5ED-4077-921D-8662311B7B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF29D72-C5ED-4077-921D-8662311B7B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF29D72-C5ED-4077-921D-8662311B7B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF29D72-C5ED-4077-921D-8662311B7B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D48DD7B-1CC8-41E2-8B9E-37736E7C44C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D48DD7B-1CC8-41E2-8B9E-37736E7C44C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D48DD7B-1CC8-41E2-8B9E-37736E7C44C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D48DD7B-1CC8-41E2-8B9E-37736E7C44C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

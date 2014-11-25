@@ -1,0 +1,2 @@
+C:\Users\Hannah.Sahlberg\Source\Workspaces\Workspace\Azure group project\Azure Group Project\Azure Group Project\bin\Debug\ServiceConfiguration.cscfg
+C:\Users\Hannah.Sahlberg\Source\Workspaces\Workspace\Azure group project\Azure Group Project\Azure Group Project\bin\Debug\ServiceDefinition.csdef
