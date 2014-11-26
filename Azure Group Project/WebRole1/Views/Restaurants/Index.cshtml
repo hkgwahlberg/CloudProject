@@ -1,10 +1,10 @@
-﻿@model IEnumerable<WebRole1.Models.Restaurant>
+﻿@model IEnumerable<GroupProjectWeb.Models.Restaurant>
 
 @{
-    ViewBag.Title = "RestaurantList";
+    ViewBag.Title = "Index";
 }
 
-<h2>RestaurantList</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -18,10 +18,10 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Review)
+            @Html.DisplayNameFor(model => model.ImageURL)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Grade)
+            @Html.DisplayNameFor(model => model.Phone)
         </th>
         <th></th>
     </tr>
@@ -29,16 +29,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            <img src="@Html.Raw(item.ImageURL)" />
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
         </td>
+       
         <td>
-            @Html.DisplayFor(modelItem => item.Review)
+            @Html.DisplayFor(modelItem => item.Phone)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Grade)
+            @Html.ActionLink("Edit", "Edit", new { id=item.RestaurantId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RestaurantId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RestaurantId })
         </td>
     </tr>
 }

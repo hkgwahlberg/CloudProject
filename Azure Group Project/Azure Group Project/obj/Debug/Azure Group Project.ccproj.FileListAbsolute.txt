@@ -124,3 +124,5 @@ C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Pr
 C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Project\obj\Debug\GroupProjectWorker\zh-Hant\Microsoft.Data.OData.resources.dll
 C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Project\obj\Debug\GroupProjectWorker\zh-Hant\Microsoft.Data.Services.Client.resources.dll
 C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Project\obj\Debug\GroupProjectWorker\zh-Hant\System.Spatial.resources.dll
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\bin\Debug\ServiceConfiguration.cscfg
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\bin\Debug\ServiceDefinition.csdef
