@@ -20,10 +20,20 @@
     <Endpoints>
       <InputEndpoint name="Endpoint1" protocol="http" port="80" />
     </Endpoints>
+    <Contents>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Project\rcf\Debug\GroupProjectWebContent\" />
+      </Content>
+    </Contents>
   </WebRole>
   <WorkerRole name="GroupProjectWorker" vmsize="Small">
     <ConfigurationSettings>
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
     </ConfigurationSettings>
+    <Contents>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Project\rcf\Debug\GroupProjectWorkerContent\" />
+      </Content>
+    </Contents>
   </WorkerRole>
 </ServiceDefinition>
