@@ -1,1 +1,1 @@
-WorkerRoleWithSBQueue1.dll
+GroupProjectWorker.dll

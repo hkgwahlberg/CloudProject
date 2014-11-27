@@ -1,37 +1,37 @@
-﻿using GroupProjectWeb.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.WindowsAzure;
+using Microsoft.ServiceBus;
+using Microsoft.ServiceBus.Messaging;
+using System.Threading.Tasks;
+using Domain;
 
-namespace WebRole1.Controllers
+namespace GroupProjectWeb.Controllers
 {
     public class RestaurantsController : Controller
     {
+        IStorage storage;
 
-        List<Restaurant> dummyRestaurants;
 
         public RestaurantsController()
         {
-            dummyRestaurants = new List<Restaurant>()
-            {
-                new Restaurant() { RestaurantId=1, Name ="Restaurant 1", Address= "Adress1", Phone="070404040", ImageURL ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg"},
-                new Restaurant() { RestaurantId=2, Name ="Restaurant 2", Address= "Adress2", Phone="070404040", ImageURL ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg"},
-                new Restaurant() { RestaurantId=3, Name ="Restaurant 3", Address= "Adress3", Phone="070404040", ImageURL ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg"},
-            };
+            storage = new StorageService();
         }
 
         // GET: Restaurant
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(dummyRestaurants);
+            var restaurants = await storage.GetAllRestaurants();
+            return View(restaurants);
         }
 
         // GET: Restaurant/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            var restaurant = dummyRestaurants.Single(rest => rest.RestaurantId == id);
+            var restaurant = await storage.GetRestaurant(id);
             return View(restaurant);
         }
 
@@ -43,18 +43,16 @@ namespace WebRole1.Controllers
 
         // POST: Restaurant/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(Restaurant restaurant)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                return View("Create", restaurant);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            await storage.AddRestaurant(restaurant);
+
+            return RedirectToAction("Index");
         }
 
         // GET: Restaurant/Edit/5
@@ -65,18 +63,15 @@ namespace WebRole1.Controllers
 
         // POST: Restaurant/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(Restaurant restaurant)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                return View("Edit", restaurant);
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            await storage.EditRestaurant(restaurant);
+            return RedirectToAction("Index");
         }
 
         // GET: Restaurant/Delete/5
@@ -87,18 +82,10 @@ namespace WebRole1.Controllers
 
         // POST: Restaurant/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete(Restaurant restaurant)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            await storage.DeleteRestaurant(restaurant.RestaurantId);
+            return RedirectToAction("Index");
         }
     }
 }

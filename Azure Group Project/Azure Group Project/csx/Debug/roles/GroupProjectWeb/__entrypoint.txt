@@ -1,1 +1,1 @@
-bin\WebRole1.dll
+bin\GroupProjectWeb.dll

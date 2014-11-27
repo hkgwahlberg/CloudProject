@@ -8,8 +8,8 @@
     <ProjectGuid>{7D48DD7B-1CC8-41E2-8B9E-37736E7C44C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WorkerRoleWithSBQueue1</RootNamespace>
-    <AssemblyName>WorkerRoleWithSBQueue1</AssemblyName>
+    <RootNamespace>GroupProjectWorker</RootNamespace>
+    <AssemblyName>GroupProjectWorker</AssemblyName>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <RoleType>Worker</RoleType>
@@ -86,6 +86,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{61152ad4-dd62-4f8a-a584-29d97992e85d}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{4ffe4619-cbbd-4c97-9cef-b47abc7c68df}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

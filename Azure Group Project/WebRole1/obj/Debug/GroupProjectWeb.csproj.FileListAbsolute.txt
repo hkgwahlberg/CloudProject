@@ -151,10 +151,6 @@ C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\WebRole1\obj\D
 C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\WebRole1\obj\Debug\WebRole1.dll
 C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\WebRole1\obj\Debug\WebRole1.pdb
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\obj\Debug\GroupProjectWeb.csprojResolveAssemblyReference.cache
-C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\obj\Debug\WebRole1.dll
-C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\WebRole1.dll.config
-C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\WebRole1.dll
-C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\WebRole1.pdb
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Antlr3.Runtime.dll
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Microsoft.Data.Edm.dll
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Microsoft.Data.OData.dll
@@ -225,4 +221,14 @@ C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRo
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\ru\System.Spatial.resources.dll
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\obj\Debug\WebRole1.pdb
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Microsoft.ServiceBus.dll
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Microsoft.ServiceBus.xml
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\GroupProjectWeb.dll.config
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\GroupProjectWeb.dll
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\GroupProjectWeb.pdb
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\obj\Debug\GroupProjectWeb.dll
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\obj\Debug\GroupProjectWeb.pdb
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Common.dll
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Domain.dll
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Common.pdb
+C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\bin\Domain.pdb

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GroupProjectWeb.Models.Restaurant>
+﻿@model IEnumerable<Domain.Restaurant>
 
 @{
     ViewBag.Title = "Index";
@@ -26,27 +26,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            <img src="@Html.Raw(item.ImageURL)" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RestaurantId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RestaurantId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RestaurantId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Html.Raw(item.ImageURL)" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RestaurantId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.RestaurantId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.RestaurantId })
+            </td>
+        </tr>
+    }
 
 </table>

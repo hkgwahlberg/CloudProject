@@ -2,7 +2,7 @@
 <RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GroupProjectWeb" version="2.5.6496.10" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
   <Runtime>
     <EntryPoint>
-      <NetFxEntryPoint assemblyName="WebRole1.dll" targetFrameworkVersion="v4.0" />
+      <NetFxEntryPoint assemblyName="GroupProjectWeb.dll" targetFrameworkVersion="v4.0" />
     </EntryPoint>
   </Runtime>
   <Properties>
@@ -15,14 +15,14 @@
     <Property name="SetConfiguration" value="Configuration=Debug" />
     <Property name="SetPlatform" value="Platform=AnyCPU" />
     <Property name="RoleTargetFramework" value="v4.5" />
-    <Property name="OutputDir" value="C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\Azure Group Project\obj\Debug\GroupProjectWeb\" />
-    <Property name="EntryPoint" value="WebRole1.dll" />
-    <Property name="SourceDir" value="C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\WebRole1\" />
-    <Property name="SitePhysicalPath" value="C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\WebRole1\" />
+    <Property name="OutputDir" value="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\obj\Debug\GroupProjectWeb\" />
+    <Property name="EntryPoint" value="GroupProjectWeb.dll" />
+    <Property name="SourceDir" value="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\" />
+    <Property name="SitePhysicalPath" value="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\" />
     <Property name="TargetRuntimeVersion" value="v4.0" />
   </Properties>
   <Sites>
-    <Site name="Web" physicalDirectory="C:\Users\Belal\Source\Workspaces\CloudProject\Azure Group Project\WebRole1\">
+    <Site name="Web" physicalDirectory="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\">
       <Bindings>
         <Binding name="Endpoint1" endpointName="Endpoint1" />
       </Bindings>
