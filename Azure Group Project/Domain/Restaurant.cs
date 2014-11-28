@@ -15,7 +15,7 @@ namespace Domain
     {
         public Restaurant(int id)
         {
-            this.PartitionKey = ServiceBusQueueHelper.QueueName;
+            this.PartitionKey = "Restaurant";
             this.RowKey = id.ToString();
         }
 

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="bb245e88-b8e1-4405-8193-e9b1c4ce0b7b" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="08e3a26b-dbe0-4309-a17e-5d9a5a66ba13" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="Azure_Group_ProjectGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -15,9 +15,19 @@
             <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWeb:Microsoft.ServiceBus.ConnectionString" />
           </maps>
         </aCS>
+        <aCS name="GroupProjectWeb:Setting1" defaultValue="">
+          <maps>
+            <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWeb:Setting1" />
+          </maps>
+        </aCS>
         <aCS name="GroupProjectWebInstances" defaultValue="[1,1,1]">
           <maps>
             <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWebInstances" />
+          </maps>
+        </aCS>
+        <aCS name="GroupProjectWorker:azuregroupproject" defaultValue="">
+          <maps>
+            <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWorker:azuregroupproject" />
           </maps>
         </aCS>
         <aCS name="GroupProjectWorker:Microsoft.ServiceBus.ConnectionString" defaultValue="">
@@ -44,9 +54,19 @@
             <aCSMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb/Microsoft.ServiceBus.ConnectionString" />
           </setting>
         </map>
+        <map name="MapGroupProjectWeb:Setting1" kind="Identity">
+          <setting>
+            <aCSMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb/Setting1" />
+          </setting>
+        </map>
         <map name="MapGroupProjectWebInstances" kind="Identity">
           <setting>
             <sCSPolicyIDMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWebInstances" />
+          </setting>
+        </map>
+        <map name="MapGroupProjectWorker:azuregroupproject" kind="Identity">
+          <setting>
+            <aCSMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWorker/azuregroupproject" />
           </setting>
         </map>
         <map name="MapGroupProjectWorker:Microsoft.ServiceBus.ConnectionString" kind="Identity">
@@ -68,6 +88,7 @@
             </componentports>
             <settings>
               <aCS name="Microsoft.ServiceBus.ConnectionString" defaultValue="" />
+              <aCS name="Setting1" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;GroupProjectWeb&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;GroupProjectWeb&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;GroupProjectWorker&quot; /&gt;&lt;/m&gt;" />
             </settings>
             <resourcereferences>
@@ -84,6 +105,7 @@
         <groupHascomponents>
           <role name="GroupProjectWorker" generation="1" functional="0" release="0" software="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\csx\Debug\roles\GroupProjectWorker" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
             <settings>
+              <aCS name="azuregroupproject" defaultValue="" />
               <aCS name="Microsoft.ServiceBus.ConnectionString" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;GroupProjectWorker&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;GroupProjectWeb&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;GroupProjectWorker&quot; /&gt;&lt;/m&gt;" />
             </settings>
@@ -110,9 +132,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="bf51f1df-b3f4-4a97-87b4-c29ede1273c1" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
+    <implementation Id="4f185a8f-95fb-4f9b-a829-f160ba027f41" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="74b9dd3f-f019-4fe9-bb54-c6cd966ee2bb" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="b4cef529-2cb6-41ae-831b-3b35f29afbf4" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb:Endpoint1" />
           </inPort>

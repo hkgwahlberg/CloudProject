@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GroupProjectWeb
+namespace GroupProjectWeb.Storage.Contracts
 {
     public interface IStorage
     {

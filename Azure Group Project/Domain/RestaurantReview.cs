@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Storage.Table;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -7,8 +8,17 @@ using System.Web;
 
 namespace Domain
 {
-    public class RestaurantReview
+    public class RestaurantReview : TableEntity
     {
+        public RestaurantReview(int id)
+        {
+            this.PartitionKey = "Review";
+            this.RowKey = id.ToString();
+        }
+
+        public RestaurantReview()
+        { }
+
         public int RestaurantReviewId { get; set; }
         [Required]
         public Restaurant Restaurant { get; set; }

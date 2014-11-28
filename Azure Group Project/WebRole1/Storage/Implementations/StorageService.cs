@@ -9,54 +9,54 @@ using Microsoft.ServiceBus;
 using Domain;
 using Common.Helpers;
 using System.Runtime.Serialization;
+using GroupProjectWeb.Storage.Contracts;
+using Microsoft.WindowsAzure.Storage.Table;
 
-namespace GroupProjectWeb
+namespace GroupProjectWeb.Storage.Implementations
 {
     public class StorageService : IStorage
     {
-        
+
         private string tableConnectionString = CloudConfigurationManager.GetSetting("TableStorageConnection");
 
         public async Task AddRestaurant(Restaurant restaurant)
         {
-            await AddOrEditStorageItem(restaurant, "restaurantNew");
+            await AddOrUpdateStorageItem(restaurant);
         }
 
-        public Task<Restaurant> GetRestaurant(int restaurantId)
+        public async Task<Restaurant> GetRestaurant(int restaurantId)
         {
-            return Task.Run(() =>
-            {
-                return new Restaurant();
-            });
+            var restaurant = await AzureStorageHelper.GetEntityFromStorage<Restaurant>(
+                "restaurants", "restaurant", restaurantId.ToString());
+
+            return restaurant;
         }
 
-        public Task<List<Restaurant>> GetAllRestaurants()
+        public async Task<List<Restaurant>> GetAllRestaurants()
         {
-            return Task.Run(() =>
-            {
-                return new List<Restaurant>() { };
-            });
+
+            var allRestaurants = await AzureStorageHelper.GetEntitiesFromStorage<Restaurant>("restaurants");
+            return allRestaurants;
         }
 
         public async Task EditRestaurant(Restaurant restaurant)
         {
-            await AddOrEditStorageItem(restaurant, "restaurantEdit");
+            await AddOrUpdateStorageItem(restaurant);
         }
 
         public Task DeleteRestaurant(int restaurantId)
         {
             return Task.Run(() =>
             {
-                
+
             });
         }
 
-        private Task AddOrEditStorageItem<T>(T itemToStorage, string type)
+        private Task AddOrUpdateStorageItem<T>(T itemToStorage)
         {
             return Task.Run(() =>
             {
                 var bMessage = new BrokeredMessage(itemToStorage, new DataContractSerializer(typeof(T)));
-                bMessage.Properties["type"] = type;
                 var client = ServiceBusQueueHelper.Client;
                 ServiceBusQueueHelper.Client.Send(bMessage);
             });

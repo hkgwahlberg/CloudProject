@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using Domain;
-namespace GroupProjectWeb
+using GroupProjectWeb.Storage.Contracts;
+
+namespace GroupProjectWeb.Storage.Implementations
 {
     public class DummyStorage : IStorage
     {

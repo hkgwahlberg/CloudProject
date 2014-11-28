@@ -8,6 +8,8 @@ using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using System.Threading.Tasks;
 using Domain;
+using GroupProjectWeb.Storage.Contracts;
+using GroupProjectWeb.Storage.Implementations;
 
 namespace GroupProjectWeb.Controllers
 {
@@ -25,6 +27,7 @@ namespace GroupProjectWeb.Controllers
         public async Task<ActionResult> Index()
         {
             var restaurants = await storage.GetAllRestaurants();
+
             return View(restaurants);
         }
 
