@@ -59,10 +59,14 @@
   <ItemGroup>
     <Folder Include="GroupProjectWebContent" />
     <Folder Include="GroupProjectWorkerContent" />
+    <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="GroupProjectWebContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="GroupProjectWorkerContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\AzureGroupProjectProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

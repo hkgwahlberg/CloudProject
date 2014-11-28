@@ -13,11 +13,13 @@
     </Endpoints>
     <ConfigurationSettings>
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
+      <Setting name="Setting1" />
     </ConfigurationSettings>
   </WebRole>
   <WorkerRole name="GroupProjectWorker" vmsize="Small">
     <ConfigurationSettings>
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
+      <Setting name="azuregroupproject" />
     </ConfigurationSettings>
   </WorkerRole>
 </ServiceDefinition>

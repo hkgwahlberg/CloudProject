@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RoleModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GroupProjectWeb" version="2.5.6496.10" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <Runtime>
+    <EntryPoint>
+      <NetFxEntryPoint assemblyName="GroupProjectWeb.dll" targetFrameworkVersion="v4.0" />
+    </EntryPoint>
+  </Runtime>
+  <Properties>
+    <Property name="TargetFrameworkVersion" value="v4.5" />
+    <Property name="RoleType" value="Web" />
+    <Property name="RoleName" value="GroupProjectWeb" />
+    <Property name="ProjectName" value="GroupProjectWeb" />
+    <Property name="Configuration" value="Release" />
+    <Property name="Platform" value="AnyCPU" />
+    <Property name="SetConfiguration" value="Configuration=Release" />
+    <Property name="SetPlatform" value="Platform=AnyCPU" />
+    <Property name="RoleTargetFramework" value="v4.5" />
+    <Property name="OutputDir" value="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\obj\Release\GroupProjectWeb\" />
+    <Property name="EntryPoint" value="GroupProjectWeb.dll" />
+    <Property name="SourceDir" value="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\WebRole1\" />
+    <Property name="SitePhysicalPath" value="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\obj\Release\GroupProjectWeb\" />
+    <Property name="TargetRuntimeVersion" value="v4.0" />
+  </Properties>
+  <Sites>
+    <Site name="Web" physicalDirectory="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\obj\Release\GroupProjectWeb\">
+      <Bindings>
+        <Binding name="Endpoint1" endpointName="Endpoint1" />
+      </Bindings>
+    </Site>
+  </Sites>
+</RoleModel>

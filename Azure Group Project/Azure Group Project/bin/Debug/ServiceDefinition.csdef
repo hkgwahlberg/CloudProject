@@ -23,10 +23,20 @@
     <ConfigurationSettings>
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
     </ConfigurationSettings>
+    <Contents>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\rcf\Debug\GroupProjectWebContent\" />
+      </Content>
+    </Contents>
   </WebRole>
   <WorkerRole name="GroupProjectWorker" vmsize="Small">
     <ConfigurationSettings>
       <Setting name="Microsoft.ServiceBus.ConnectionString" />
     </ConfigurationSettings>
+    <Contents>
+      <Content destination=".\">
+        <SourceDirectory path="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\rcf\Debug\GroupProjectWorkerContent\" />
+      </Content>
+    </Contents>
   </WorkerRole>
 </ServiceDefinition>

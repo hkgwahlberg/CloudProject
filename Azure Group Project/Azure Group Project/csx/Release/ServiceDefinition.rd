@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="bb245e88-b8e1-4405-8193-e9b1c4ce0b7b" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="bd5e739f-57a9-4f11-86dd-2c148207785d" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="Azure_Group_ProjectGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -62,7 +62,7 @@
       </maps>
       <components>
         <groupHascomponents>
-          <role name="GroupProjectWeb" generation="1" functional="0" release="0" software="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\csx\Debug\roles\GroupProjectWeb" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
+          <role name="GroupProjectWeb" generation="1" functional="0" release="0" software="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\csx\Release\roles\GroupProjectWeb" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaIISHost.exe " memIndex="-1" hostingEnvironment="frontendadmin" hostingEnvironmentVersion="2">
             <componentports>
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
@@ -82,7 +82,7 @@
           </sCSPolicy>
         </groupHascomponents>
         <groupHascomponents>
-          <role name="GroupProjectWorker" generation="1" functional="0" release="0" software="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\csx\Debug\roles\GroupProjectWorker" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
+          <role name="GroupProjectWorker" generation="1" functional="0" release="0" software="C:\Users\Hannah.Sahlberg\Documents\GitHub\CloudProject\Azure Group Project\Azure Group Project\csx\Release\roles\GroupProjectWorker" entryPoint="base\x64\WaHostBootstrapper.exe" parameters="base\x64\WaWorkerHost.exe " memIndex="-1" hostingEnvironment="consoleroleadmin" hostingEnvironmentVersion="2">
             <settings>
               <aCS name="Microsoft.ServiceBus.ConnectionString" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;GroupProjectWorker&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;GroupProjectWeb&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;GroupProjectWorker&quot; /&gt;&lt;/m&gt;" />
@@ -110,9 +110,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="bf51f1df-b3f4-4a97-87b4-c29ede1273c1" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
+    <implementation Id="f743bcc9-9fe2-428a-b38f-d6eb6ca4245b" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="74b9dd3f-f019-4fe9-bb54-c6cd966ee2bb" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="7559a6bc-c5a9-4bd5-8615-553ab7d6d97c" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb:Endpoint1" />
           </inPort>

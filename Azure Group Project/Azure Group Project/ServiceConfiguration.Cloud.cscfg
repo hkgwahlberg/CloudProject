@@ -3,13 +3,15 @@
   <Role name="GroupProjectWeb">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://cloudtestservicebus-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=feyGATZiibfvruOBT/5KsJHG13OqyJuFlNnPSQ17AYs=" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://azuregroupproject-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XCS+DM+D7qnOWj1yW9brSan+Wap3jC1i55sJGRUIaZ4=" />
+      <Setting name="Setting1" value="DefaultEndpointsProtocol=https;AccountName=azuregroupproject;AccountKey=32hdiS2ZeLAViROWBdn1G10Ax6LuElGt6rpLV8PXUNomTiMo+pkVqmq0Zr13y2Pdusez2ia1F7Ssc/5d9aZ4xA==" />
     </ConfigurationSettings>
   </Role>
   <Role name="GroupProjectWorker">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://cloudtestservicebus-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=feyGATZiibfvruOBT/5KsJHG13OqyJuFlNnPSQ17AYs=" />
+      <Setting name="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://azuregroupproject-ns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XCS+DM+D7qnOWj1yW9brSan+Wap3jC1i55sJGRUIaZ4=" />
+      <Setting name="azuregroupproject" value="DefaultEndpointsProtocol=https;AccountName=azuregroupproject;AccountKey=32hdiS2ZeLAViROWBdn1G10Ax6LuElGt6rpLV8PXUNomTiMo+pkVqmq0Zr13y2Pdusez2ia1F7Ssc/5d9aZ4xA==" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

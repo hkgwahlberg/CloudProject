@@ -12,7 +12,7 @@ namespace Common.Helpers
 {
     public static class ServiceBusQueueHelper
     {
-        private const string _queueName = "cloudtesthsahlberg";
+        private const string _queueName = "azuregroupproject";
         private static QueueClient _client;
 
         public static QueueClient Client { get { return _client; } }
