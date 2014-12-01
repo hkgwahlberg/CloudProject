@@ -7,27 +7,26 @@ using Microsoft.WindowsAzure;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using System.Threading.Tasks;
-using Domain;
 using GroupProjectWeb.Storage.Contracts;
 using GroupProjectWeb.Storage.Implementations;
+using GroupProjectWeb.Models;
+using GroupProjectWeb.Models.Restaurant;
 
 namespace GroupProjectWeb.Controllers
 {
     public class RestaurantsController : Controller
     {
-        IStorage storage;
+        private readonly IRestaurantStorage storage;
 
-
-        public RestaurantsController()
+        public RestaurantsController(IRestaurantStorage storage)
         {
-            storage = new StorageService();
+            this.storage = storage;
         }
 
         // GET: Restaurant
         public async Task<ActionResult> Index()
         {
             var restaurants = await storage.GetAllRestaurants();
-
             return View(restaurants);
         }
 
@@ -46,49 +45,57 @@ namespace GroupProjectWeb.Controllers
 
         // POST: Restaurant/Create
         [HttpPost]
-        public async Task<ActionResult> Create(Restaurant restaurant)
+        public async Task<ActionResult> Create(RestaurantViewModel restaurant)
         {
             if (!ModelState.IsValid)
             {
-                return View("Create", restaurant);
+                return View(restaurant);
             }
-
             await storage.AddRestaurant(restaurant);
 
             return RedirectToAction("Index");
         }
 
         // GET: Restaurant/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var restaurant = await storage.GetRestaurant(id);
+            return View(restaurant);
         }
 
         // POST: Restaurant/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(Restaurant restaurant)
+        public async Task<ActionResult> Edit(RestaurantViewModel restaurant)
         {
             if (!ModelState.IsValid)
             {
                 return View("Edit", restaurant);
             }
-
             await storage.EditRestaurant(restaurant);
+
             return RedirectToAction("Index");
         }
 
         // GET: Restaurant/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var restaurant = await storage.GetRestaurant(id);
+            return View(restaurant);
         }
 
         // POST: Restaurant/Delete/5
         [HttpPost]
-        public async Task<ActionResult> Delete(Restaurant restaurant)
+        public async Task<ActionResult> Delete(RestaurantViewModel restaurant)
         {
-            await storage.DeleteRestaurant(restaurant.RestaurantId);
-            return RedirectToAction("Index");
+            try
+            {
+                await storage.DeleteRestaurant(restaurant.RestaurantId);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

@@ -1,7 +1,11 @@
 ﻿using Domain;
+using GroupProjectWeb.Models.Restaurant;
+using GroupProjectWeb.Models.Review;
+using GroupProjectWeb.Storage.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,97 +13,86 @@ namespace GroupProjectWeb.Controllers
 {
     public class ReviewsController : Controller
     {
-        List<RestaurantReview> dummyReviews;
-        List<Restaurant> dummyRestaurants;
+        private readonly IReviewStorage storage;
 
-        public ReviewsController()
+        public ReviewsController(IReviewStorage storage)
         {
-            dummyRestaurants = new List<Restaurant>()
-            {
-                new Restaurant() { RestaurantId=1, Name ="Restaurant 1", Address= "Adress1", Phone="070404040", ImageURL ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg"},
-                new Restaurant() { RestaurantId=2, Name ="Restaurant 2", Address= "Adress2", Phone="070404040", ImageURL ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg"},
-                new Restaurant() { RestaurantId=3, Name ="Restaurant 3", Address= "Adress3", Phone="070404040", ImageURL ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg"},
-            };
-
-            dummyReviews = new List<RestaurantReview> { 
-                new RestaurantReview { RestaurantReviewId = 1, Restaurant = dummyRestaurants[0],  PostedDate = DateTime.Now, Grade = 1, Review = "Sjukt dåligt!", Reviewer = "Hannah" }, 
-                new RestaurantReview { RestaurantReviewId = 2, Restaurant = dummyRestaurants[1], PostedDate = DateTime.Now, Grade = 3, Review = "Helt ok!", Reviewer = "Hannah" },
-                new RestaurantReview { RestaurantReviewId = 3, Restaurant = dummyRestaurants[2], PostedDate = DateTime.Now, Grade = 5, Review = "Sjukt bra", Reviewer = "Hannah" }};
-           
+            this.storage = storage;
         }
+
         // GET: Review
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-             return View(dummyReviews);
+            var reviews = await storage.GetAllReviews();
+            return View(reviews);
         }
 
         // GET: Review/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            var review = dummyReviews.Single(rev => rev.RestaurantReviewId == id);
+            var review = await storage.GetReview(id);
             return View(review);
         }
 
         // GET: Review/Create
-        public ActionResult Create()
+        public ActionResult Create(string restaurantName, int restaurantId)
         {
-            return View();
+            var review = new ReviewViewModel
+            {
+                RestaurantId = restaurantId,
+                RestaurantName = restaurantName,
+                PostedDate = DateTime.Now
+            };
+            return View(review);
         }
 
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(ReviewViewModel review)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                return View(review);
+            }
+            await storage.AddReview(review);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Review/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            //autofill form
-            var review = dummyReviews.Single(rev => rev.RestaurantReviewId == id);
+            var review = await storage.GetReview(id);
             return View(review);
         }
 
         // POST: Review/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(ReviewViewModel review)
         {
-            try
+            if (!ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                return View(review);
+            }
+            await storage.EditReview(review);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
 
         // GET: Review/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            var review = await storage.GetReview(id);
+            return View(review);
         }
 
         // POST: Review/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public async Task<ActionResult> Delete(ReviewViewModel review)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                await storage.DeleteReview(review.RestaurantReviewId);
                 return RedirectToAction("Index");
             }
             catch

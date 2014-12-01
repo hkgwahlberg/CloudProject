@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GroupProjectWeb.Models.RestaurantReview>
+﻿@model IEnumerable<GroupProjectWeb.Models.Review.ReviewViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -6,19 +6,16 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Restaurant)
+            @Html.DisplayNameFor(model => model.RestaurantName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Reviewer)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Review)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Grade)
@@ -32,13 +29,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Restaurant.Name)
+            @Html.DisplayFor(modelItem => item.RestaurantName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Reviewer)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Review)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Grade)

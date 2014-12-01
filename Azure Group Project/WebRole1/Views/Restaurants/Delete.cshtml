@@ -1,4 +1,4 @@
-﻿@model Domain.Restaurant
+﻿@model GroupProjectWeb.Models.Restaurant.RestaurantViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -28,11 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ImageURL)
+            @Html.DisplayNameFor(model => model.ImageThumbnail)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageURL)
+            @Html.DisplayFor(model => model.ImageThumbnail)
         </dd>
 
         <dt>
@@ -43,9 +43,16 @@
             @Html.DisplayFor(model => model.Phone)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Reviews)
+        </dt>
+
+       
+
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

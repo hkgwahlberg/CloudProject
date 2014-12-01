@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Restaurant>
+﻿@model IEnumerable<GroupProjectWeb.Models.Restaurant.RestaurantViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ImageURL)
+            @Html.DisplayNameFor(model => model.ImageThumbnail)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Phone)
@@ -30,7 +30,7 @@
     {
         <tr>
             <td>
-                <img src="@Html.Raw(item.ImageURL)" />
+                <img src="@Html.Raw(item.ImageThumbnail)" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

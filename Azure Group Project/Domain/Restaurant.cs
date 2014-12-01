@@ -23,14 +23,10 @@ namespace Domain
         { }
 
         public int RestaurantId { get; set; }
-        [StringLength(100), Required]
         public string Name { get; set; }
-        [StringLength(100), Required]
         public string Address { get; set; }
-        [StringLength(1000)]
-        [DisplayName("Image")]
         public string ImageURL { get; set; }
-        [StringLength(12)]
+        public string ImageThumbnail { get; set; }
         public string Phone { get; set; }
     }
 }
