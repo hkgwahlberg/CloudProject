@@ -31,7 +31,7 @@ namespace GroupProjectWeb.Controllers
         }
 
         // GET: Restaurant/Details/5
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(string id)
         {
             var restaurant = await storage.GetRestaurant(id);
             return View(restaurant);
@@ -57,7 +57,7 @@ namespace GroupProjectWeb.Controllers
         }
 
         // GET: Restaurant/Edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(string id)
         {
             var restaurant = await storage.GetRestaurant(id);
             return View(restaurant);
@@ -71,13 +71,13 @@ namespace GroupProjectWeb.Controllers
             {
                 return View("Edit", restaurant);
             }
-            await storage.EditRestaurant(restaurant);
+            await storage.UpdateRestaurant(restaurant);
 
             return RedirectToAction("Index");
         }
 
         // GET: Restaurant/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(string id)
         {
             var restaurant = await storage.GetRestaurant(id);
             return View(restaurant);

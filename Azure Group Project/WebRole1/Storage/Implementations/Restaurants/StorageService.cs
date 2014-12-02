@@ -13,69 +13,88 @@ using GroupProjectWeb.Storage.Contracts;
 using Microsoft.WindowsAzure.Storage.Table;
 using GroupProjectWeb.Models.Restaurant;
 using AutoMapper;
-namespace GroupProjectWeb.Storage.Implementations
+using GroupProjectWeb.Models.Review;
+namespace GroupProjectWeb.Storage.Implementations.Restaurants
 {
     public class StorageService : IRestaurantStorage
     {
-        private string tableConnectionString;
-
         public StorageService()
         {
-            tableConnectionString = CloudConfigurationManager.GetSetting("TableStorageConnection");
-
             Mapper.CreateMap<Restaurant, RestaurantViewModel>();
             Mapper.CreateMap<RestaurantViewModel, Restaurant>();
             Mapper.CreateMap<RestaurantFullViewModel, Restaurant>();
+            Mapper.CreateMap<Restaurant, RestaurantFullViewModel>();
         }
+
         public async Task AddRestaurant(RestaurantViewModel restaurantFromView)
         {
-            var restaurant = Mapper.Map<Restaurant>(restaurantFromView);
+            if (string.IsNullOrEmpty(restaurantFromView.RestaurantId))
+            {
+                restaurantFromView.RestaurantId = Guid.NewGuid().ToString();
+            }
 
-            await AddOrUpdateItem(restaurant);
+            var restaurant = new Restaurant(restaurantFromView.RestaurantId)
+            {
+                RestaurantId = restaurantFromView.RestaurantId,
+                Address = restaurantFromView.Address,
+                ImageThumbnail = restaurantFromView.ImageThumbnail,
+                ImageURL = restaurantFromView.ImageURL,
+                Name = restaurantFromView.Name,
+                Phone = restaurantFromView.Phone
+            };
+
+            await SendToStorage(restaurant, "Add", restaurant.PartitionKey);
         }
 
-        public async Task<RestaurantViewModel> GetRestaurant(int restaurantId)
+        public async Task UpdateRestaurant(RestaurantViewModel restaurantFromView)
+        {
+            var restaurant = new Restaurant(restaurantFromView.RestaurantId)
+            {
+                RestaurantId = restaurantFromView.RestaurantId,
+                Address = restaurantFromView.Address,
+                ImageThumbnail = restaurantFromView.ImageThumbnail,
+                ImageURL = restaurantFromView.ImageURL,
+                Name = restaurantFromView.Name,
+                Phone = restaurantFromView.Phone
+            };
+
+            await SendToStorage(restaurant, "Update", restaurant.PartitionKey);
+        }
+
+        public async Task<RestaurantViewModel> GetRestaurant(string restaurantId)
         {
             var restaurant = await AzureStorageHelper.GetEntityFromStorage<Restaurant>(
-                "restaurants", "restaurant", restaurantId.ToString());
+                "Restaurants", "Restaurant", restaurantId);
 
             var viewModel = Mapper.Map<RestaurantFullViewModel>(restaurant);
 
-            viewModel.Reviews = null; //insert logic for getting reviews
+            //insert logic  getting reviewsfor
 
+            viewModel.Reviews = new List<ReviewViewModel>();
             return viewModel;
         }
 
         public async Task<List<RestaurantViewModel>> GetAllRestaurants()
         {
-
-            var allRestaurants = await AzureStorageHelper.GetEntitiesFromStorage<Restaurant>("restaurants");
+            var allRestaurants = await AzureStorageHelper.GetEntitiesFromStorage<Restaurant>("Restaurants");
 
             var restaurantsToView = Mapper.Map<List<RestaurantViewModel>>(allRestaurants);
 
             return restaurantsToView;
         }
 
-        public async Task EditRestaurant(RestaurantViewModel restaurantFromView)
+        public async Task DeleteRestaurant(string restaurantId)
         {
-            var restaurant = Mapper.Map<Restaurant>(restaurantFromView);
-
-            await AddOrUpdateItem(restaurant);
+            await SendToStorage(restaurantId, "Delete", "Restaurant");
         }
 
-        public Task DeleteRestaurant(int restaurantId)
+        private Task SendToStorage<T>(T itemToStorage, string request, string type)
         {
             return Task.Run(() =>
             {
-
-            });
-        }
-
-        private Task AddOrUpdateItem<T>(T itemToStorage)
-        {
-            return Task.Run(() =>
-            {
-                var bMessage = new BrokeredMessage(itemToStorage, new DataContractSerializer(typeof(T)));
+                var bMessage = new BrokeredMessage(itemToStorage);
+                bMessage.Properties["Request"] = request;
+                bMessage.Properties["Type"] = type;
                 var client = ServiceBusQueueHelper.Client;
                 ServiceBusQueueHelper.Client.Send(bMessage);
             });

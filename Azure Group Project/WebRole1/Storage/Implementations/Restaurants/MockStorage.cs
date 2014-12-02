@@ -29,9 +29,9 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
 
             restaurants = new List<RestaurantViewModel>()
             {
-                new RestaurantFullViewModel() { RestaurantId=1, Name ="Restaurant 1", Address= "Adress1", Phone="070404040", ImageThumbnail ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg", Reviews = reviews.Where(rest=>rest.RestaurantName == "Restaurant 1").ToList() },
-                new RestaurantFullViewModel() { RestaurantId=2, Name ="Restaurant 2", Address= "Adress2", Phone="070404040", ImageThumbnail ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg", Reviews = reviews.Where(rest=>rest.RestaurantName == "Restaurant 2").ToList()},
-                new RestaurantFullViewModel() { RestaurantId=3, Name ="Restaurant 3", Address= "Adress3", Phone="070404040", ImageThumbnail ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg", Reviews = reviews.Where(rest=>rest.RestaurantName == "Restaurant 3").ToList()},
+                new RestaurantFullViewModel() { RestaurantId="1", Name ="Restaurant 1", Address= "Adress1", Phone="070404040", ImageThumbnail ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg", Reviews = reviews.Where(rest=>rest.RestaurantName == "Restaurant 1").ToList() },
+                new RestaurantFullViewModel() { RestaurantId="2", Name ="Restaurant 2", Address= "Adress2", Phone="070404040", ImageThumbnail ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg", Reviews = reviews.Where(rest=>rest.RestaurantName == "Restaurant 2").ToList()},
+                new RestaurantFullViewModel() { RestaurantId="3", Name ="Restaurant 3", Address= "Adress3", Phone="070404040", ImageThumbnail ="http://www.blayney.nsw.gov.au/Images/UserUploadedImages/488/Sams%20Restaurant%20Thumbnail%20243x243.jpg", Reviews = reviews.Where(rest=>rest.RestaurantName == "Restaurant 3").ToList()},
             };
         }
 
@@ -43,7 +43,7 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
             });
         }
 
-        public Task<RestaurantViewModel> GetRestaurant(int restaurantId)
+        public Task<RestaurantViewModel> GetRestaurant(string restaurantId)
         {
             return Task.Run(() =>
             {
@@ -61,7 +61,7 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
             });
         }
 
-        public Task EditRestaurant(RestaurantViewModel editedRestaurant)
+        public Task UpdateRestaurant(RestaurantViewModel editedRestaurant)
         {
             return Task.Run(() =>
             {
@@ -71,7 +71,7 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
             });
         }
 
-        public Task DeleteRestaurant(int restaurantId)
+        public Task DeleteRestaurant(string restaurantId)
         {
             return Task.Run(() =>
             {

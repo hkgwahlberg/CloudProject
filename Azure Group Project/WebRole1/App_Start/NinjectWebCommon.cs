@@ -62,7 +62,7 @@ namespace GroupProjectWeb.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IRestaurantStorage>().To<GroupProjectWeb.Storage.Implementations.Restaurants.MockStorage>();
+            kernel.Bind<IRestaurantStorage>().To<GroupProjectWeb.Storage.Implementations.Restaurants.StorageService>();
             kernel.Bind<IReviewStorage>().To<GroupProjectWeb.Storage.Implementations.Reviews.MockStorage>();
         }        
     }

@@ -1,4 +1,6 @@
-﻿using Microsoft.WindowsAzure;
+﻿using Domain;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
 using System;
 using System.Collections.Generic;
@@ -12,25 +14,28 @@ namespace Common.Helpers
     {
         private const string _storageName = "azuregroupproject";
 
-        public static string StorageName { get { return _storageName; } }
+        //  public static string StorageName { get { return _storageName; } }
 
-        public static void Initialize()
+        private static string tableConnectionString = CloudConfigurationManager.GetSetting(_storageName);
+
+
+        //public static async Task InitializeAzureTable(string tableName)
+        //{
+        //    CloudTable table = await GetAzureTable(tableName);
+        //    table.CreateIfNotExists();
+        //}
+
+        private static Task<CloudTable> GetAzureTable(string tableName)
         {
-            string tableConnectionString = CloudConfigurationManager.GetSetting(_storageName);
-        }
+            return Task.Run(() =>
+            {
+                var storageAccount = CloudStorageAccount.Parse(tableConnectionString);
+                var tableClient = storageAccount.CreateCloudTableClient();
+                var table = tableClient.GetTableReference(tableName);
+                table.CreateIfNotExists();
 
-        public static async Task InitializeAzureTable(string tableName)
-        {
-            CloudTable table = await GetAzureTable(tableName);
-            table.CreateIfNotExists();
-
-        }
-
-        public static async Task<CloudTable> GetAzureTable(string tableName)
-        {
-            //TODO: Logik för att sätta upp en table
-           
-            return null;
+                return table;
+            });
         }
 
         public static async Task<T> GetEntityFromStorage<T>(string tableName, string partitionKey, string rowKey) where T : TableEntity
@@ -49,6 +54,29 @@ namespace Common.Helpers
             var result = table.ExecuteQuery(query);
 
             return result.ToList();
+        }
+
+        public static async Task<bool> PostEntityToStorage<T>(T entity, string tableName) where T : TableEntity, new()
+        {
+            var table = await AzureStorageHelper.GetAzureTable(tableName);
+            var insertOperation = TableOperation.InsertOrReplace(entity);
+            var result = table.Execute(insertOperation);
+            //Check status
+            return true;
+        }
+
+        public static async Task<bool> DeleteEntityFromStorage<T>(string partitionKey, string rowKey, string tableName) where T : TableEntity
+        {
+            var table = await AzureStorageHelper.GetAzureTable(tableName);
+            var entityFromStorage = await GetEntityFromStorage<T>(tableName, partitionKey, rowKey);
+            if (entityFromStorage != null)
+            {
+                var removeOperation = TableOperation.Delete(entityFromStorage);
+                table.Execute(removeOperation);
+            }
+
+            //check status
+            return true;
         }
     }
 }

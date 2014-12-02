@@ -26,9 +26,13 @@ namespace Common.Helpers
             string connectionString = CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
             var namespaceManager = NamespaceManager.CreateFromConnectionString(connectionString);
 
+            var qd = new QueueDescription(_queueName);
+            qd.MaxSizeInMegabytes = 2048;
+            qd.DefaultMessageTimeToLive = new TimeSpan(0, 1, 0);
+
             if (!namespaceManager.QueueExists(_queueName))
             {
-                namespaceManager.CreateQueue(_queueName);
+                namespaceManager.CreateQueue(qd);
             }
 
             _client = QueueClient.CreateFromConnectionString(connectionString, _queueName);

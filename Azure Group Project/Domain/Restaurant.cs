@@ -7,22 +7,20 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 using Microsoft.WindowsAzure.Storage.Table;
-using Common.Helpers;
 
 namespace Domain
 {
     public class Restaurant : TableEntity
     {
-        public Restaurant(int id)
+        public Restaurant(string id)
         {
             this.PartitionKey = "Restaurant";
-            this.RowKey = id.ToString();
+            this.RowKey = id;
         }
 
-        public Restaurant()
-        { }
+        public Restaurant() { }
 
-        public int RestaurantId { get; set; }
+        public string RestaurantId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string ImageURL { get; set; }

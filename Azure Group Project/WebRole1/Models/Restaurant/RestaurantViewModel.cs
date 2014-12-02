@@ -7,9 +7,16 @@ using System.Text;
 
 namespace GroupProjectWeb.Models.Restaurant
 {
+    
     public class RestaurantViewModel
     {
-        public int RestaurantId { get; set; }
+        public RestaurantViewModel()
+        {
+            ImageURL = "";
+            ImageThumbnail = "";
+        }
+
+        public string RestaurantId { get; set; }
         [StringLength(100), Required]
         public string Name { get; set; }
         [StringLength(100), Required]

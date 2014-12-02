@@ -10,7 +10,11 @@ namespace GroupProjectWeb.Models.Restaurant
 {
     public class RestaurantFullViewModel : RestaurantViewModel
     {
-        
+        public RestaurantFullViewModel()
+        {
+            Reviews = new List<ReviewViewModel>();
+        }
+
         public List<ReviewViewModel> Reviews { get; set; }
     }
 }

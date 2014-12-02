@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="c1e1c40b-ce45-4501-9bb3-2c26f43e52aa" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="86279256-89b4-48cf-b9b5-956da8d64cdb" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="Azure_Group_ProjectGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -10,14 +10,14 @@
         </inPort>
       </componentports>
       <settings>
+        <aCS name="GroupProjectWeb:azuregroupproject" defaultValue="">
+          <maps>
+            <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWeb:azuregroupproject" />
+          </maps>
+        </aCS>
         <aCS name="GroupProjectWeb:Microsoft.ServiceBus.ConnectionString" defaultValue="">
           <maps>
             <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWeb:Microsoft.ServiceBus.ConnectionString" />
-          </maps>
-        </aCS>
-        <aCS name="GroupProjectWeb:Setting1" defaultValue="">
-          <maps>
-            <mapMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/MapGroupProjectWeb:Setting1" />
           </maps>
         </aCS>
         <aCS name="GroupProjectWebInstances" defaultValue="[1,1,1]">
@@ -49,14 +49,14 @@
         </lBChannel>
       </channels>
       <maps>
+        <map name="MapGroupProjectWeb:azuregroupproject" kind="Identity">
+          <setting>
+            <aCSMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb/azuregroupproject" />
+          </setting>
+        </map>
         <map name="MapGroupProjectWeb:Microsoft.ServiceBus.ConnectionString" kind="Identity">
           <setting>
             <aCSMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb/Microsoft.ServiceBus.ConnectionString" />
-          </setting>
-        </map>
-        <map name="MapGroupProjectWeb:Setting1" kind="Identity">
-          <setting>
-            <aCSMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb/Setting1" />
           </setting>
         </map>
         <map name="MapGroupProjectWebInstances" kind="Identity">
@@ -87,8 +87,8 @@
               <inPort name="Endpoint1" protocol="http" portRanges="80" />
             </componentports>
             <settings>
+              <aCS name="azuregroupproject" defaultValue="" />
               <aCS name="Microsoft.ServiceBus.ConnectionString" defaultValue="" />
-              <aCS name="Setting1" defaultValue="" />
               <aCS name="__ModelData" defaultValue="&lt;m role=&quot;GroupProjectWeb&quot; xmlns=&quot;urn:azure:m:v1&quot;&gt;&lt;r name=&quot;GroupProjectWeb&quot;&gt;&lt;e name=&quot;Endpoint1&quot; /&gt;&lt;/r&gt;&lt;r name=&quot;GroupProjectWorker&quot; /&gt;&lt;/m&gt;" />
             </settings>
             <resourcereferences>
@@ -132,9 +132,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="2bfb425f-8027-4633-899d-cc724288b472" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
+    <implementation Id="389c645c-db00-45b3-9c2e-929cb98aaf73" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="449f9d46-66b1-401b-a568-aeb2780ef205" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="2fb3229a-ea3b-4674-b41b-8bf112934462" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb:Endpoint1" />
           </inPort>
