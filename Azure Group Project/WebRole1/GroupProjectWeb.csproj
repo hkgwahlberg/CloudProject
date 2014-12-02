@@ -186,6 +186,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\Implementations\Restaurants\StorageService.cs" />
     <Compile Include="Storage\Implementations\Reviews\MockStorage.cs" />
+    <Compile Include="Storage\Implementations\Reviews\StorageService.cs" />
     <Compile Include="WebRole.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,11 +228,11 @@
     <Content Include="Views\Restaurants\Create.cshtml" />
     <Content Include="Views\Restaurants\Edit.cshtml" />
     <Content Include="Views\Reviews\Details.cshtml" />
-    <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\Restaurants\Delete.cshtml" />
     <Content Include="Views\Reviews\Delete.cshtml" />
     <Content Include="Views\Reviews\Create.cshtml" />
+    <Content Include="Views\Reviews\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

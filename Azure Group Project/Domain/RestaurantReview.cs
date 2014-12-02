@@ -10,19 +10,19 @@ namespace Domain
 {
     public class RestaurantReview : TableEntity
     {
-        public RestaurantReview(int id)
+        public RestaurantReview(string id)
         {
             this.PartitionKey = "Review";
-            this.RowKey = id.ToString();
+            this.RowKey = id;
         }
 
-        public RestaurantReview()
-        { }
+        public RestaurantReview() { }
 
-        public int RestaurantReviewId { get; set; }
-        public Restaurant Restaurant { get; set; }
+        public string RestaurantReviewId { get; set; }
+        public string RestaurantId { get; set; }
+        public string RestaurantName { get; set; }
         public string Reviewer { get; set; }
-        public string Review { get; set; }
+        public string Description { get; set; }
         public double Grade { get; set; }
         public DateTime PostedDate { get; set; }
     }

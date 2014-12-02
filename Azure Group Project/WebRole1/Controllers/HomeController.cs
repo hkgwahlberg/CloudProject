@@ -10,7 +10,6 @@ namespace GroupProjectWeb.Controllers
     {
         public ActionResult Index()
         {
-
             return View();
         }
 

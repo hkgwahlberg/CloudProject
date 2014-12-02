@@ -14,15 +14,15 @@ namespace GroupProjectWeb.Storage.Implementations.Reviews
         {
             reviews = new List<ReviewViewModel> 
             { 
-             new ReviewViewModel { RestaurantReviewId = 1, PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
-             new ReviewViewModel { RestaurantReviewId = 2, PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
-             new ReviewViewModel { RestaurantReviewId = 3, PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 3", Grade = 5, Description = "Skirbra" },
-             new ReviewViewModel { RestaurantReviewId = 4, PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 1", Grade = 2, Description = "Skitkasst" },
-             new ReviewViewModel { RestaurantReviewId = 5, PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 2", Grade = 4, Description = "Skitbra" },
-             new ReviewViewModel { RestaurantReviewId = 6, PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 3", Grade = 5, Description = "Skitbra" },
-             new ReviewViewModel { RestaurantReviewId = 7, PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
-             new ReviewViewModel { RestaurantReviewId = 8, PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
-             new ReviewViewModel { RestaurantReviewId = 9, PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 3", Grade = 4, Description = "Skitbra" },
+             new ReviewViewModel { RestaurantReviewId = "1", PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
+             new ReviewViewModel { RestaurantReviewId = "2", PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
+             new ReviewViewModel { RestaurantReviewId = "3", PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 3", Grade = 5, Description = "Skirbra" },
+             new ReviewViewModel { RestaurantReviewId = "4", PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 1", Grade = 2, Description = "Skitkasst" },
+             new ReviewViewModel { RestaurantReviewId = "5", PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 2", Grade = 4, Description = "Skitbra" },
+             new ReviewViewModel { RestaurantReviewId = "6", PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 3", Grade = 5, Description = "Skitbra" },
+             new ReviewViewModel { RestaurantReviewId = "7", PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
+             new ReviewViewModel { RestaurantReviewId = "8", PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
+             new ReviewViewModel { RestaurantReviewId = "9", PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 3", Grade = 4, Description = "Skitbra" },
             };
 
         }
@@ -34,7 +34,7 @@ namespace GroupProjectWeb.Storage.Implementations.Reviews
             });
         }
 
-        public Task<ReviewViewModel> GetReview(int reviewId)
+        public Task<ReviewViewModel> GetReview(string reviewId)
         {
             return Task.Run(() =>
             {
@@ -52,7 +52,7 @@ namespace GroupProjectWeb.Storage.Implementations.Reviews
             });
         }
 
-        public Task EditReview(ReviewViewModel editedReview)
+        public Task UpdateReview(ReviewViewModel editedReview)
         {
             return Task.Run(() =>
             {
@@ -62,7 +62,7 @@ namespace GroupProjectWeb.Storage.Implementations.Reviews
             });
         }
 
-        public Task DeleteReview(int reviewId)
+        public Task DeleteReview(string reviewId)
         {
             return Task.Run(() =>
            {

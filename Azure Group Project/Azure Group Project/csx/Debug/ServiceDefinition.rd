@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="86279256-89b4-48cf-b9b5-956da8d64cdb" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
+<serviceModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Azure_Group_Project" generation="1" functional="0" release="0" Id="91225e31-7f58-4454-9c67-77ba89fe1ea3" dslVersion="1.2.0.0" xmlns="http://schemas.microsoft.com/dsltools/RDSM">
   <groups>
     <group name="Azure_Group_ProjectGroup" generation="1" functional="0" release="0">
       <componentports>
@@ -132,9 +132,9 @@
     </group>
   </groups>
   <implements>
-    <implementation Id="389c645c-db00-45b3-9c2e-929cb98aaf73" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
+    <implementation Id="06e799b9-2c6c-4797-af11-c7a59eb7db7a" ref="Microsoft.RedDog.Contract\ServiceContract\Azure_Group_ProjectContract@ServiceDefinition">
       <interfacereferences>
-        <interfaceReference Id="2fb3229a-ea3b-4674-b41b-8bf112934462" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
+        <interfaceReference Id="a6aff072-5b26-4b54-9173-6c4e39b4a335" ref="Microsoft.RedDog.Contract\Interface\GroupProjectWeb:Endpoint1@ServiceDefinition">
           <inPort>
             <inPortMoniker name="/Azure_Group_Project/Azure_Group_ProjectGroup/GroupProjectWeb:Endpoint1" />
           </inPort>

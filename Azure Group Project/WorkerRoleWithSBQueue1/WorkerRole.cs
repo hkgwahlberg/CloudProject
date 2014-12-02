@@ -46,44 +46,39 @@ namespace GroupProjectWorker
             }
             else if (request.Equals("Delete"))
             {
-                bool isSuccess = await DeleteStorageItem(type, receivedMessage);
+                var id = receivedMessage.Properties["Id"].ToString();
+                var isSuccess = await DeleteStorageItem(type, id);
             }
         }
 
-        private async Task<bool> DeleteStorageItem(string type, BrokeredMessage receivedMessage)
+        private async Task<bool> DeleteStorageItem(string type, string id)
         {
-            var id = receivedMessage.GetBody<String>();
             bool isSuccess = false;
 
             if (type.Equals("Restaurant"))
             {
-                isSuccess = await AzureStorageHelper.DeleteEntityFromStorage<Restaurant>("Restaurant", id, "Restauants");
+                isSuccess = await AzureStorageHelper.DeleteFromStorage<Restaurant>("Restaurants", "Restaurant", id);
             }
             else if (type.Equals("Review"))
             {
-                isSuccess = await AzureStorageHelper.DeleteEntityFromStorage<RestaurantReview>("Review", id, "Reviews");
+                isSuccess = await AzureStorageHelper.DeleteFromStorage<RestaurantReview>("Reviews", "Review", id);
             }
             return isSuccess;
         }
 
         private async Task<bool> AddOrUpdateStorageItem(string type, string request, BrokeredMessage receivedMessage)
         {
-            string table = "";
-
-            var itemToStorage = new TableEntity();
-
+            bool isSuccess = false;
             if (type.Equals("Restaurant"))
             {
-                itemToStorage = receivedMessage.GetBody<Restaurant>();
-                table = "Restaurants";
+                var itemToStorage = receivedMessage.GetBody<Restaurant>();
+                isSuccess = await AzureStorageHelper.PostToStorage(itemToStorage, "Restaurants");
             }
             else if (type.Equals("Review"))
             {
-                itemToStorage = receivedMessage.GetBody<RestaurantReview>();
-                table = "Reviews";
+                var itemToStorage = receivedMessage.GetBody<RestaurantReview>();
+                isSuccess = await AzureStorageHelper.PostToStorage(itemToStorage, "Reviews");
             }
-
-            var isSuccess = await AzureStorageHelper.PostEntityToStorage(itemToStorage, table);
             return isSuccess;
         }
 

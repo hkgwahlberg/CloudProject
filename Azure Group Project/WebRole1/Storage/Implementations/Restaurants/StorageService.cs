@@ -24,6 +24,7 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
             Mapper.CreateMap<RestaurantViewModel, Restaurant>();
             Mapper.CreateMap<RestaurantFullViewModel, Restaurant>();
             Mapper.CreateMap<Restaurant, RestaurantFullViewModel>();
+            Mapper.CreateMap<RestaurantReview, ReviewViewModel>();
         }
 
         public async Task AddRestaurant(RestaurantViewModel restaurantFromView)
@@ -68,9 +69,9 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
 
             var viewModel = Mapper.Map<RestaurantFullViewModel>(restaurant);
 
-            //insert logic  getting reviewsfor
+            var reviewsForRestaurant = await AzureStorageHelper.GetReviewsForRestaurant(restaurant.RestaurantId);
 
-            viewModel.Reviews = new List<ReviewViewModel>();
+            viewModel.Reviews = Mapper.Map<List<ReviewViewModel>>(reviewsForRestaurant);
             return viewModel;
         }
 
@@ -95,6 +96,12 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
                 var bMessage = new BrokeredMessage(itemToStorage);
                 bMessage.Properties["Request"] = request;
                 bMessage.Properties["Type"] = type;
+
+                if (request.Equals("Delete"))
+                {
+                    bMessage.Properties["Id"] = itemToStorage;
+                }
+
                 var client = ServiceBusQueueHelper.Client;
                 ServiceBusQueueHelper.Client.Send(bMessage);
             });

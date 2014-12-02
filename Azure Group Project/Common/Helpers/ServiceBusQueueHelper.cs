@@ -13,6 +13,7 @@ namespace Common.Helpers
     public static class ServiceBusQueueHelper
     {
         private const string _queueName = "azuregroupproject";
+        private static string _connectionString = CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
         private static QueueClient _client;
 
         public static QueueClient Client { get { return _client; } }
@@ -23,8 +24,7 @@ namespace Common.Helpers
             // Set the maximum number of concurrent connections 
             ServicePointManager.DefaultConnectionLimit = 12;
 
-            string connectionString = CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
-            var namespaceManager = NamespaceManager.CreateFromConnectionString(connectionString);
+            var namespaceManager = NamespaceManager.CreateFromConnectionString(_connectionString);
 
             var qd = new QueueDescription(_queueName);
             qd.MaxSizeInMegabytes = 2048;
@@ -35,7 +35,7 @@ namespace Common.Helpers
                 namespaceManager.CreateQueue(qd);
             }
 
-            _client = QueueClient.CreateFromConnectionString(connectionString, _queueName);
+            _client = QueueClient.CreateFromConnectionString(_connectionString, _queueName);
         }
     }
 }

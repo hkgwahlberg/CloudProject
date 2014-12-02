@@ -12,18 +12,7 @@ namespace Common.Helpers
 {
     public static class AzureStorageHelper
     {
-        private const string _storageName = "azuregroupproject";
-
-        //  public static string StorageName { get { return _storageName; } }
-
-        private static string tableConnectionString = CloudConfigurationManager.GetSetting(_storageName);
-
-
-        //public static async Task InitializeAzureTable(string tableName)
-        //{
-        //    CloudTable table = await GetAzureTable(tableName);
-        //    table.CreateIfNotExists();
-        //}
+        private static string tableConnectionString = CloudConfigurationManager.GetSetting("azuregroupproject");
 
         private static Task<CloudTable> GetAzureTable(string tableName)
         {
@@ -56,27 +45,48 @@ namespace Common.Helpers
             return result.ToList();
         }
 
-        public static async Task<bool> PostEntityToStorage<T>(T entity, string tableName) where T : TableEntity, new()
+        public static async Task<bool> PostToStorage<T>(T entity, string tableName) where T : TableEntity, new()
         {
             var table = await AzureStorageHelper.GetAzureTable(tableName);
             var insertOperation = TableOperation.InsertOrReplace(entity);
             var result = table.Execute(insertOperation);
-            //Check status
-            return true;
+
+            if (result.HttpStatusCode == 204)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        public static async Task<bool> DeleteEntityFromStorage<T>(string partitionKey, string rowKey, string tableName) where T : TableEntity
+        public static async Task<bool> DeleteFromStorage<T>(string tableName, string partitionKey, string rowKey) where T : TableEntity
         {
             var table = await AzureStorageHelper.GetAzureTable(tableName);
             var entityFromStorage = await GetEntityFromStorage<T>(tableName, partitionKey, rowKey);
+
+            //TODO: Delete reviews for restaurant
+
             if (entityFromStorage != null)
             {
                 var removeOperation = TableOperation.Delete(entityFromStorage);
-                table.Execute(removeOperation);
-            }
+                var result = table.Execute(removeOperation);
 
-            //check status
-            return true;
+                if (result.HttpStatusCode == 204)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public async static Task<List<RestaurantReview>> GetReviewsForRestaurant(string restaurantId)
+        {
+            var table = await AzureStorageHelper.GetAzureTable("Reviews");
+            var query = new TableQuery<RestaurantReview>()
+                .Where(TableQuery.GenerateFilterCondition("RestaurantId", QueryComparisons.Equal, restaurantId));
+            var retrievedResult = table.ExecuteQuery(query);
+
+            return retrievedResult.ToList();
         }
     }
 }

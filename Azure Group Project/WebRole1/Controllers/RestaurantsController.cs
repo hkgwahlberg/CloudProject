@@ -71,6 +71,7 @@ namespace GroupProjectWeb.Controllers
             {
                 return View("Edit", restaurant);
             }
+
             await storage.UpdateRestaurant(restaurant);
 
             return RedirectToAction("Index");

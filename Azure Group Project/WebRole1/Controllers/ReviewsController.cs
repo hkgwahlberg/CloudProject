@@ -28,14 +28,14 @@ namespace GroupProjectWeb.Controllers
         }
 
         // GET: Review/Details/5
-        public async Task<ActionResult> Details(int id)
+        public async Task<ActionResult> Details(string id)
         {
             var review = await storage.GetReview(id);
             return View(review);
         }
 
         // GET: Review/Create
-        public ActionResult Create(string restaurantName, int restaurantId)
+        public ActionResult Create(string restaurantName, string restaurantId)
         {
             var review = new ReviewViewModel
             {
@@ -54,13 +54,14 @@ namespace GroupProjectWeb.Controllers
             {
                 return View(review);
             }
+
             await storage.AddReview(review);
 
             return RedirectToAction("Index");
         }
 
         // GET: Review/Edit/5
-        public async Task<ActionResult> Edit(int id)
+        public async Task<ActionResult> Edit(string id)
         {
             var review = await storage.GetReview(id);
             return View(review);
@@ -74,13 +75,14 @@ namespace GroupProjectWeb.Controllers
             {
                 return View(review);
             }
-            await storage.EditReview(review);
+
+            await storage.UpdateReview(review);
 
             return RedirectToAction("Index");
         }
 
         // GET: Review/Delete/5
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(string id)
         {
             var review = await storage.GetReview(id);
             return View(review);

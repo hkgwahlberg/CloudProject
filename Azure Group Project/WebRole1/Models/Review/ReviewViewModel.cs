@@ -8,7 +8,7 @@ namespace GroupProjectWeb.Models.Review
 {
     public class ReviewViewModel
     {
-        public int RestaurantReviewId { get; set; }
+        public string RestaurantReviewId { get; set; }
         [StringLength(50)]
         public string Reviewer { get; set; }
         [Required]
@@ -17,12 +17,10 @@ namespace GroupProjectWeb.Models.Review
         [Required]
         [Range(1, 5)]
         public double Grade { get; set; }
-        //[DataType(DataType.Date)]
-        //[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime PostedDate { get; set; }
 
         [Required]
-        public int RestaurantId { get; set; }
+        public string RestaurantId { get; set; }
         [Required]
         public string RestaurantName { get; set; }
     }

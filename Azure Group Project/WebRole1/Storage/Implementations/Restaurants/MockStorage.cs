@@ -16,15 +16,15 @@ namespace GroupProjectWeb.Storage.Implementations.Restaurants
         public MockStorage()
         {
             var reviews = new List<ReviewViewModel> { 
-             new ReviewViewModel { RestaurantReviewId = 1, PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
-             new ReviewViewModel { RestaurantReviewId = 2, PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
-             new ReviewViewModel { RestaurantReviewId = 3, PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 3", Grade = 5, Description = "Skirbra" },
-             new ReviewViewModel { RestaurantReviewId = 4, PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 1", Grade = 2, Description = "Skitkasst" },
-             new ReviewViewModel { RestaurantReviewId = 5, PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 2", Grade = 4, Description = "Skitbra" },
-             new ReviewViewModel { RestaurantReviewId = 6, PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 3", Grade = 5, Description = "Skitbra" },
-             new ReviewViewModel { RestaurantReviewId = 7, PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
-             new ReviewViewModel { RestaurantReviewId = 8, PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
-             new ReviewViewModel { RestaurantReviewId = 9, PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 3", Grade = 4, Description = "Skitbra" },
+             new ReviewViewModel { RestaurantReviewId = "1", PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
+             new ReviewViewModel { RestaurantReviewId = "2", PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
+             new ReviewViewModel { RestaurantReviewId = "3", PostedDate = DateTime.Now, RestaurantName = "Restaurant 1", Reviewer = "Reviewer 3", Grade = 5, Description = "Skirbra" },
+             new ReviewViewModel { RestaurantReviewId = "4", PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 1", Grade = 2, Description = "Skitkasst" },
+             new ReviewViewModel { RestaurantReviewId = "5", PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 2", Grade = 4, Description = "Skitbra" },
+             new ReviewViewModel { RestaurantReviewId = "6", PostedDate = DateTime.Now, RestaurantName = "Restaurant 2", Reviewer = "Reviewer 3", Grade = 5, Description = "Skitbra" },
+             new ReviewViewModel { RestaurantReviewId = "7", PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 1", Grade = 1, Description = "Skitkasst" },
+             new ReviewViewModel { RestaurantReviewId = "8", PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 2", Grade = 3, Description = "OK" },
+             new ReviewViewModel { RestaurantReviewId = "9", PostedDate = DateTime.Now, RestaurantName = "Restaurant 3", Reviewer = "Reviewer 3", Grade = 4, Description = "Skitbra" },
             };
 
             restaurants = new List<RestaurantViewModel>()

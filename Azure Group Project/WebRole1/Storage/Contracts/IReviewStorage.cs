@@ -11,9 +11,9 @@ namespace GroupProjectWeb.Storage.Contracts
     public interface IReviewStorage
     {
         Task AddReview(ReviewViewModel review);
-        Task<ReviewViewModel> GetReview(int reviewId);
+        Task<ReviewViewModel> GetReview(string reviewId);
         Task<List<ReviewViewModel>> GetAllReviews();
-        Task EditReview(ReviewViewModel review);
-        Task DeleteReview(int reviewId);
+        Task UpdateReview(ReviewViewModel review);
+        Task DeleteReview(string reviewId);
     }
 }
